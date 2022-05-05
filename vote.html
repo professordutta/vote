@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote</title>
+</head>
+<body>
+    <h1>How was our service Quality?</h1>
+    <form action="update" method="post">
+        <input type="radio" name="radiobtn" id="a" value="a"><label>Very Good</label><br>
+        <input type="radio" name="radiobtn" id="b" value="b"><label>Good</label><br>
+        <input type="radio" name="radiobtn" id="c" value="c"><label>Average</label><br>
+        <input type="radio" name="radiobtn" id="d" value="d"><label>Bad</label><br>
+        <button type="submit">Submit</button>
+    </form>
+<!-- 
+    <script>
+        let radio_a = document.getElementById("a")
+        let radio_b = document.getElementById("a")
+        let radio_c = document.getElementById("a")
+        let radio_d = document.getElementById("a")
+        radio_a.addEventListener("click",()=>{
+           radio_a.checked = true
+           radio_b.checked = false
+           radio_c.checked = false
+           radio_d.checked = false
+        })
+        radio_b.addEventListener("click",()=>{
+           radio_a.checked = false
+           radio_b.checked = true
+           radio_c.checked = false
+           radio_d.checked = false
+        })
+        radio_c.addEventListener("click",()=>{
+           radio_a.checked = false
+           radio_b.checked = false
+           radio_c.checked = true
+           radio_d.checked = false
+        })
+        radio_d.addEventListener("click",()=>{
+           radio_a.checked = false
+           radio_b.checked = false
+           radio_c.checked = false
+           radio_d.checked = true
+        })
+    </script> -->
+</body>
+</html>

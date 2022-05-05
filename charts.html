@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Demo</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+</head>
+<body>
+    
+    <div id="barchart_values" style="width: 900px; height: 300px;"></div>    
+    <script type="text/javascript">
+        window.setInterval('refresh()', 3000);
+        let a,b,c,d;
+        axios.get('/fetchdata').then(result=>{
+            a = result.data.a;     
+            b = result.data.b;
+            c = result.data.c;
+            d = result.data.d;
+        })
+
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ["Quality", "Votes", { role: "style" } ],
+            ["Very Good", a, "#b87333"],
+            ["Good", b, "silver"],
+            ["Average", c, "gold"],
+            ["Bad", d, "color: #e5e4e2"]
+          ]);
+    
+          var view = new google.visualization.DataView(data);
+          view.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation" },
+                           2]);
+    
+          var options = {
+            title: "Service Quality Feedback (No. of Votes)",
+            width: 600,
+            height: 400,
+            bar: {groupWidth: "95%"},
+            legend: { position: "none" },
+          };
+          var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+          chart.draw(view, options);
+      }
+      </script>
+</body>
+</html>
